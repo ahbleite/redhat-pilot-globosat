@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:camel="http://camel.apache.org/schema/spring"
+	xsi:schemaLocation="
+       http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://camel.apache.org/schema/spring http://camel.apache.org/schema/spring/camel-spring.xsd">
+
+	<bean id="listOfMovieServiceRS" class="com.redhat.pilot.rest.service.ListOfMovieServiceRS" />
+
+	<!-- Define a traditional camel context here -->
+	<camelContext id="camel" xmlns="http://camel.apache.org/schema/spring">
+
+		<restConfiguration component="servlet" bindingMode="json"
+			port="8080" apiContextPath="/rest">
+
+			<dataFormatProperty key="prettyPrint" value="true" />
+
+		</restConfiguration>
+
+
+		<rest path="/listOfMoviesByName">
+			<get uri="/{name}">
+				<to uri="direct:getMoviesByName" />
+			</get>
+		</rest>
+
+		<rest path="/listOfMoviesByRewritten">
+			<get uri="/{rewritten}">
+				<to uri="direct:getMoviesByRewritten" />
+			</get>
+		</rest>
+
+		<rest path="/listOfMoviesByYear">
+			<get uri="/{year}">
+				<to uri="direct:getMoviesByYear" />
+			</get>
+		</rest>
+
+		<rest path="/sendMessageToBroker">
+			<get uri="/{message}">
+				<to uri="direct:getSendMessageToBroker" />
+			</get>
+		</rest>
+
+		<route>
+			<from uri="direct:getSendMessageToBroker" />
+
+			<transform>
+				<simple>${header.message}</simple>
+			</transform>
+
+			<log message="Body = ${body}" />
+
+			<to uri="bean:listOfMovieServiceRS?method=getSendMessageToBroker" />
+
+		</route>
+
+		<route>
+			<from uri="direct:getMoviesByName" />
+
+			<transform>
+				<simple>${header.name}</simple>
+			</transform>
+
+			<log message="Body = ${body}" />
+
+			<to uri="bean:listOfMovieServiceRS?method=getMoviesByName" />
+
+		</route>
+
+		<route>
+			<from uri="direct:getMoviesByRewritten" />
+
+			<transform>
+				<simple>${header.rewritten}</simple>
+			</transform>
+
+			<log message="Body = ${body}" />
+
+			<to uri="bean:listOfMovieServiceRS?method=getMoviesByRewritten" />
+
+		</route>
+
+		<route>
+			<from uri="direct:getMoviesByYear" />
+
+			<transform>
+				<simple>${header.year}</simple>
+			</transform>
+
+			<log message="Body = ${body}" />
+
+			<to uri="bean:listOfMovieServiceRS?method=getMoviesByYear" />
+
+		</route>
+
+	</camelContext>
+
+</beans>

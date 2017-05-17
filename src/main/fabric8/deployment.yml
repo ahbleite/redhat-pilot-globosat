@@ -1,0 +1,17 @@
+spec:
+  template:
+    spec:
+      containers:
+        - 
+          resources:
+            requests:
+              cpu: "0.2"
+              memory: 512Mi
+            limits:
+              cpu: "1.0"
+              memory: 512Mi
+          env:
+          - name: API_VERSION_SERVICE
+            value: 1
+          - name: API_ENVIRONMENT
+            value: DEV

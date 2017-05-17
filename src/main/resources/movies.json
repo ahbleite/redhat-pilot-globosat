@@ -1,0 +1,23 @@
+ [
+ 	{"id":1, "name":"O Poderoso Chefão","year":1972,"rewritten":false},
+ 	{"id":2, "name":"O Mágico de Oz","year":1939,"rewritten":false},
+ 	{"id":3, "name":"Cidadão Kane","year":1941,"rewritten":false},
+ 	{"id":4, "name":"Um Sonho de Liberdade","year":1944,"rewritten":false},
+ 	{"id":5, "name":"Pulp Fiction","year":1994,"rewritten":false},
+ 	{"id":6, "name":"Casablanca","year":1942,"rewritten":false},
+ 	{"id":7, "name":"E.T.","year":1982,"rewritten":false},
+ 	{"id":8, "name":"Uma Odisseia no Espaço","year":2001,"rewritten":true},
+ 	{"id":9, "name":"A Lista de Schindler","year":1993,"rewritten":false},
+ 	{"id":10,"name":"Guerra nas Estrelas","year":1977,"rewritten":false},
+ 	{"id":11,"name":"De Volta Para o Futuro","year":1985,"rewritten":false},
+ 	{"id":12,"name":"Os Caçadores da Arca Perdida","year":1981,"rewritten":false},
+ 	{"id":13,"name":"Forrest Gump","year":1994,"rewritten":false},
+ 	{"id":14,"name":"O Sol é Para Todos","year":1962,"rewritten":false},
+ 	{"id":15,"name":"Os Sete Samurais","year":1954,"rewritten":false},
+ 	{"id":16,"name":"Bonnie e Clyde","year":1967,"rewritten":false},
+ 	{"id":17,"name":"Apertem os Cintos… O Piloto Sumiu","year":1980,"rewritten":false},
+ 	{"id":18,"name":"O Labirinto do Fauno","year":2006,"rewritten":false},
+ 	{"id":19,"name":"Rocky: O Lutador","year":1976,"rewritten":false},
+ 	{"id":20,"name":"Quem Quer Ser um Milionário","year":2008,"rewritten":false},
+ 	{"id":21,"name":"The Lord of the Rings: The Return of the King","year":2003,"rewritten":false}
+ ]

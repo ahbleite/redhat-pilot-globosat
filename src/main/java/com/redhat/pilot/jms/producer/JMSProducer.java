@@ -19,7 +19,7 @@ public class JMSProducer {
 
 		try {
 
-			String url = "ssl://broker-amq-tcp-ssl-redhat-test.151f.gsat-corp.openshiftapps.com:61616";
+			String url = "ssl://broker-amq-tcp-ssl-redhat-test.151f.gsat-corp.openshiftapps.com:443";
 
 			ActiveMQSslConnectionFactory connectionFactory = new ActiveMQSslConnectionFactory(url);
 
@@ -55,9 +55,14 @@ public class JMSProducer {
 		} finally {
 			try {
 
-				producer.close();
-				session.close();
-				connection.close();
+				if(producer != null)
+					producer.close();
+				
+				if(session != null)
+					session.close();
+				
+				if(connection != null)
+					connection.close();
 
 			} catch (JMSException e) {
 				e.printStackTrace();

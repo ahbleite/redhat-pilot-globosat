@@ -22,24 +22,38 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.web.servlet.ServletRegistrationBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ImportResource;
+import org.springframework.core.Ordered;
+import org.springframework.core.annotation.Order;
+import org.springframework.web.filter.CharacterEncodingFilter;
 
 @SpringBootApplication
-// load regular Spring XML file from the classpath that contains the Camel XML DSL
-@ImportResource({"classpath:spring/camel-context.xml"})
+// load regular Spring XML file from the classpath that contains the Camel XML
+// DSL
+@ImportResource({ "classpath:spring/camel-context.xml" })
 public class Application {
 
-    /**
-     * A main method to start this application.
-     */
-    public static void main(String[] args) {
-        SpringApplication.run(Application.class, args);
-    }
-    
-    @Bean
-    ServletRegistrationBean servletRegistrationBean() {
-        ServletRegistrationBean servlet = new ServletRegistrationBean(new CamelHttpTransportServlet(), "/rest/*");
-        servlet.setName("CamelServlet");
-        return servlet;
-    }
+	/**
+	 * A main method to start this application.
+	 */
+	public static void main(String[] args) {
+		SpringApplication.run(Application.class, args);
+	}
+
+	@Bean
+	ServletRegistrationBean servletRegistrationBean() {
+		ServletRegistrationBean servlet = new ServletRegistrationBean(new CamelHttpTransportServlet(), "/rest/*");
+		servlet.setName("CamelServlet");
+		return servlet;
+	}
+
+	@Bean
+	@Order(Ordered.HIGHEST_PRECEDENCE)
+	CharacterEncodingFilter characterEncodingFilter() {
+		CharacterEncodingFilter filter = new CharacterEncodingFilter();
+		filter.setEncoding("UTF-8");
+		filter.setForceEncoding(true);
+
+		return filter;
+	}
 
 }

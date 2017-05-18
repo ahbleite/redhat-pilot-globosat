@@ -71,6 +71,7 @@ public class ListOfMovieService implements Serializable {
 	private List<Movie> getMoviesByName(Movie movie) {
 		List<Movie> movies;
 		try {
+
 			movies = getMovies();
 			return movies.stream().filter(m -> m.getName().contains(movie.getName())).collect(Collectors.toList());
 		} catch (IOException ioe) {
